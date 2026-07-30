@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01";
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  code, kbd, samp, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Custom Cursor */
+@media (hover: hover) and (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor a,
+  .has-custom-cursor button,
+  .has-custom-cursor input,
+  .has-custom-cursor textarea {
+    cursor: none !important;
+  }
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: #B4922E;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease, transform 0.15s ease-out;
+  will-change: transform;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(180, 146, 46, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(0.16, 0.8, 0.24, 1),
+              height 0.3s cubic-bezier(0.16, 0.8, 0.24, 1),
+              border-color 0.3s ease,
+              background-color 0.3s ease,
+              opacity 0.2s ease;
+  will-change: transform, width, height;
+}
+
+.custom-cursor-ring.hovering {
+  width: 56px;
+  height: 56px;
+  background-color: rgba(180, 146, 46, 0.12);
+  border-color: rgba(180, 146, 46, 0.9);
+}
+
+/* Pure White Day Theme Utilities */
+.glass-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 31, 58, 0.12);
+  box-shadow: 0 10px 30px -5px rgba(11, 31, 58, 0.05), 0 1px 3px rgba(11, 31, 58, 0.03);
+}
+
+.dark .glass-card {
+  background: rgba(15, 28, 51, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.glass-card-subtle {
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 31, 58, 0.10);
+  box-shadow: 0 4px 12px -2px rgba(11, 31, 58, 0.04);
+}
+
+.dark .glass-card-subtle {
+  background: rgba(15, 28, 51, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.3);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(11, 31, 58, 0.12);
+}
+
+.dark .glass-nav {
+  background: rgba(7, 15, 31, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.glass-pill {
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 31, 58, 0.15);
+  box-shadow: 0 2px 6px rgba(11, 31, 58, 0.04);
+}
+
+.dark .glass-pill {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Card Animations & Utilities */
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.16, 0.8, 0.24, 1), box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(180, 146, 46, 0.3);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(180, 146, 46, 0.4);
+}
+
+.badge-pop {
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.badge-pop:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Floating animation */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--r, 0deg)); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatSlow 6s ease-in-out infinite 2s;
+}
+
+/* Focus ring accessibility */
+.focus-ring:focus-visible {
+  outline: 2px solid #B4922E;
+  outline-offset: 3px;
+}
+
